@@ -143,8 +143,12 @@ const app = new Elysia()
     return { data: result, message: "Course submissions retrieved" };
   });
 
-if (process.env.NODE_ENV !== "production") {
-  app.listen(3000);
+if (process.env.NODE_ENV !== "test") {
+  app.listen(3000, () => {
+    console.log(`🔥 Backend running at http://localhost:3000`);
+    console.log(`FRONTEND_URL → ${process.env.FRONTEND_URL}`);
+    console.log(`DATABASE_URL: ${process.env.DATABASE_URL}`);
+    console.log(`GOOGLE_REDIRECT_URI: ${process.env.GOOGLE_REDIRECT_URI}`);  });
 }
 
 //tes
